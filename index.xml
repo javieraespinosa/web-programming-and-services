@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mobile and Web Services Programming</title><link>https://javieraespinosa.github.io/web-programming-and-services/</link><atom:link href="https://javieraespinosa.github.io/web-programming-and-services/index.xml" rel="self" type="application/rss+xml"/><description>Mobile and Web Services Programming</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><image><url>https://javieraespinosa.github.io/web-programming-and-services/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url><title>Mobile and Web Services Programming</title><link>https://javieraespinosa.github.io/web-programming-and-services/</link></image><item><title/><link>https://javieraespinosa.github.io/web-programming-and-services/tp1/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://javieraespinosa.github.io/web-programming-and-services/tp1/</guid><description>&lt;h1 id="interprocess-communication-with-websockets">Interprocess Communication with WebSockets&lt;/h1>
+&lt;p>A &lt;strong>socket&lt;/strong> is an endpoint of an inter-process communication flow. A socket is bound to a port in a computer and enables communication over a communication protocol (e.g. UDP and TCP). When a socket is bound to the TCP protocol it allows bi-directional communication between two processes.&lt;/p>
+&lt;p>&lt;strong>WebSocket&lt;/strong> is a new technology (HTML5) inspired in classic sockets. WebSocket provides &lt;em>full-duplex communication&lt;/em> over browser and servers, but it can be used by any client or server application (e.g. mobile applications). In this exercise you will experiment with sockets by developing a chat application using WebSockets.&lt;/p>
+&lt;h3 id="requirements">Requirements&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;a href="https://javieraespinosa.github.io/web-programming-and-services/files/WebSockets.zip">Chat Application&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://nodejs.org/" target="_blank" rel="noopener">NodeJS&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://expressjs.com/" target="_blank" rel="noopener">Express&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://socket.io/" target="_blank" rel="noopener">SocketIO&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="objectives">Objectives&lt;/h2>
+&lt;p>Experiment with the development of sockets.&lt;/p>
+&lt;h2 id="chat-application">Chat Application&lt;/h2>
+&lt;p>The chat application is composed of the following files:&lt;/p>
+&lt;ul>
+&lt;li>js &amp;mdash; &lt;em>contains the chat console client&lt;/em>&lt;/li>
+&lt;li>html &amp;mdash; &lt;em>contains the chat web client&lt;/em>&lt;/li>
+&lt;li>js &amp;mdash; &lt;em>contains the code of the server&lt;/em>&lt;/li>
+&lt;li>json &amp;mdash; contains the build dependencies&lt;/li>
+&lt;/ul>
+&lt;p>Application dependencies can be installed by executing the following command in the folder containing the application files:&lt;/p>
+&lt;pre>&lt;code>npm install
+&lt;/code>&lt;/pre>
+&lt;p>Client and server are executed by issuing the following commands:&lt;/p>
+&lt;pre>&lt;code>node Client.js
+node Server.js
+&lt;/code>&lt;/pre>
+&lt;p>Once the server is running, open a browser and go to 
+&lt;a href="http://localhost:8080/" target="_blank" rel="noopener">&lt;strong>http://localhost:8080&lt;/strong>&lt;/a>.&lt;/p>
+&lt;h2 id="to-do">To Do&lt;/h2>
+&lt;p>Hand in a short report explaining what you did and what you learned and a zip with your application to &lt;code>javier.espino**@imag.fr&lt;/code>.&lt;/p>
+&lt;ol>
+&lt;li>Broadcast a message to connected users when someone connects or disconnects.&lt;/li>
+&lt;li>Add support for nicknames.&lt;/li>
+&lt;li>Show who&amp;rsquo;s online.&lt;/li>
+&lt;li>Add private messaging.&lt;/li>
+&lt;li>Model the application using the object oriented model and describe its architecture.&lt;/li>
+&lt;/ol></description></item><item><title/><link>https://javieraespinosa.github.io/web-programming-and-services/tp2/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://javieraespinosa.github.io/web-programming-and-services/tp2/</guid><description>&lt;h1 id="remote-method-invocation-rmi">Remote Method Invocation (RMI)&lt;/h1>
+&lt;p>The &lt;em>remote procedure call&lt;/em> (&lt;strong>RPC&lt;/strong>) approach extends the common programming abstraction of the procedure call to distributed environments, allowing a calling process to call a procedure in a remote node as if it is local.&lt;/p>
+&lt;p>&lt;em>Remote method invocation&lt;/em> (&lt;strong>RMI&lt;/strong>) is similar to RPC but for distributed objects, with added benefits in terms of using object-oriented programming concepts in distributed systems. It also extends the concept of an object reference to the global distributed environments, and allows the use of object references as parameters in remote invocations.&lt;/p>
+&lt;p>In this exercise you will experiment with RMI by developing an object oriented chat application using Java RMI.&lt;/p>
+&lt;h3 id="requirements">Requirements&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">Java SDK&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://javieraespinosa.github.io/web-programming-and-services/files/RMI.zip">Chat Application&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="objectives">Objectives&lt;/h2>
+&lt;ul>
+&lt;li>Experiment with the development of RMI.&lt;/li>
+&lt;li>Compare Socket and RMI development.&lt;/li>
+&lt;/ul>
+&lt;h2 id="chat-application">Chat Application&lt;/h2>
+&lt;p>The chat application is composed of the following files:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>IChatServer.java&lt;/code> &amp;mdash; lists the (remote) operations exposed by the Chat Server.&lt;/li>
+&lt;li>&lt;code>ChatServer.java&lt;/code> &amp;mdash; implements the Chat Server.&lt;/li>
+&lt;li>&lt;code>IChatClient.java&lt;/code> &amp;mdash; lists the (remote) operations exposed by the Chat Client.&lt;/li>
+&lt;li>&lt;code>ChatClient.java&lt;/code> &amp;mdash; implements the Chat Client.&lt;/li>
+&lt;li>&lt;code>Run.java&lt;/code> &amp;mdash; isolate the code initializing the chat&amp;rsquo; client and server parts.&lt;/li>
+&lt;li>&lt;code>security.policy&lt;/code> &amp;mdash; authorizes remote communication (in/out) in the JVM.&lt;/li>
+&lt;li>&lt;code>StartServer.sh&lt;/code> and &lt;code>StartClient.sh&lt;/code> &amp;mdash; shell scripts for launching the Chat server and client.&lt;/li>
+&lt;/ul>
+&lt;p>The figure below illustrates the operations exposed by the client and server:&lt;/p>
+&lt;p>&lt;img src="https://javieraespinosa.github.io/web-programming-and-services/img/RMI.png" alt="RMI">&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Server&lt;/strong>
+&lt;ul>
+&lt;li>&lt;code>addClient(client)&lt;/code> &amp;mdash; subscribes a new client into the chat server.&lt;/li>
+&lt;li>&lt;code>send(msg)&lt;/code> &amp;mdash; receives the message that will be broadcasted to all the clients connected (subscribed) to the server&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>Client&lt;/strong>
+&lt;ul>
+&lt;li>&lt;code>Notify(msg)&lt;/code> &amp;mdash; receives a server notification (e.g., the string representing the message sent by a user)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>The following code snippets show the &lt;strong>Server and Client interfaces&lt;/strong>:&lt;/p>
+&lt;pre>&lt;code>public interface IChatServer extends Remote {
+public void send(String msg) throws RemoteException;
+public void addClient(IChatClient client) throws RemoteException;
+}
+public interface IChatClient extends Remote {
+      public void notify(String msg) throws RemoteException;
+}
+&lt;/code>&lt;/pre>
+&lt;p>Note that the figure also illustrates the process of a client subscription:&lt;/p>
+&lt;ol>
+&lt;li>A client instance contact call the &lt;em>addClient&lt;/em> server operation and subscribe itself into the server.&lt;/li>
+&lt;li>The server uses its &lt;em>send&lt;/em> operation for &lt;em>notifying&lt;/em> all connected clients about the connection of a new client.&lt;/li>
+&lt;/ol>
+&lt;p>You can start the chat&amp;rsquo; server and client parts by issuing the following commands:&lt;/p>
+&lt;pre>&lt;code>java -Djava.security.policy=file:security.policy # Run server
+java -Djava.security.policy=file:security.policy # Run client
+&lt;/code>&lt;/pre>
+&lt;p>Remark that these commands are abstracted in the scripts &lt;code>StartServer.sh&lt;/code> and &lt;code>StartClient.sh&lt;/code>.&lt;/p>
+&lt;h2 id="to-do">To Do&lt;/h2>
+&lt;p>Hand in a short report explaining what you did and what you learned and a zip with your application. In particular describe the differences between developing a chat application using WebSockets and RMI and argue about the pertinence of using these tools for given applications.&lt;/p>
+&lt;ol>
+&lt;li>Broadcast a message to connected users when someone connects or disconnects.&lt;/li>
+&lt;li>Add support for nicknames.&lt;/li>
+&lt;li>Show who is online.&lt;/li>
+&lt;li>Add private messaging.&lt;/li>
+&lt;/ol></description></item><item><title/><link>https://javieraespinosa.github.io/web-programming-and-services/tp3a/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://javieraespinosa.github.io/web-programming-and-services/tp3a/</guid><description>&lt;h1 id="couchdb-a-first-touch">CouchDB: A first touch&lt;/h1>
+&lt;p>This practical exercise is intended to make you reason about the differences of principles between &amp;ldquo;classic&amp;rdquo; RDBMS and NoSQL servers for building and managing data. DO NOT expect to acquire an extensive practice of the use of the DBMS used here. Rather expect to be able to:&lt;/p>
+&lt;ul>
+&lt;li>Point out some of their principles concerning: data model, design process, internal and external data management, architecture;&lt;/li>
+&lt;li>Compare these principles with those of classic RDBMS.&lt;/li>
+&lt;/ul>
+&lt;p>Therefore we propose an exercise organized into two parts where you are supposed to run some tests and answer control questions for making sure that you are achieving the expected objective of the exercise.&lt;/p>
+&lt;h2 id="requirements">Requirements&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;a href="http://couchdb.apache.org/" target="_blank" rel="noopener">CouchDB&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://curl.haxx.se/download.html" target="_blank" rel="noopener">cURL&lt;/a> (
+&lt;a href="http://www.paehl.com/open_source/?download=curl_740_0.zip" target="_blank" rel="noopener">cURL 4 Windows&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="building-and-querying-a-nosql-oriented-database">Building and Querying a NoSQL Oriented Database&lt;/h2>
+&lt;p>In this exercise you will populate and query a NoSQL database using data coming from the 
+&lt;a href="http://developers.deezer.com/api/" target="_blank" rel="noopener">Deezer RESTful service&lt;/a>. In particular, you will use data related with the rock band Muse. For instance, the following links give access to Muse&amp;rsquo;s albums and information about similar artists (note that Muse has the ID 705 in Deezer):&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="http://api.deezer.com/artist/705/albums">http://api.deezer.com/artist/705/albums&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://api.deezer.com/artist/705/related">http://api.deezer.com/artist/705/related&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="to-do">TO DO&lt;/h2>
+&lt;h3 id="creating-and-populating-a-database">Creating and populating a database&lt;/h3>
+&lt;ul>
+&lt;li>Using a terminal, **create **the **database **Deezer:&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>curl -X PUT http://localhost:5984/deezer
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Download (&lt;em>and save into files&lt;/em>) the data about **Muse&amp;rsquo; album **and &lt;strong>similar artists&lt;/strong>:&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>curl -X GET http://api.deezer.com/artist/705/albums &amp;gt; MuseAlbums.json
+curl -X GET http://api.deezer.com/artist/705/related &amp;gt; MuseRelatedAlbums.json
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>&lt;strong>Populate&lt;/strong> the Deezer **database **with the retrieved information by issuing the following commands:&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>curl -X PUT http://localhost:5984/deezer/muse_albums --upload-file &amp;quot;MuseAlbums.json&amp;quot;
+curl -X PUT http://localhost:5984/deezer/muse_related_artists --upload-file &amp;quot;MuseRelatedAlbums.json&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>&lt;strong>Verify&lt;/strong> the content of the database:&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>curl -v http://localhost:5984/deezer/muse_albums
+curl -v http://localhost:5984/deezer/muse_related_artists
+&lt;/code>&lt;/pre>
+&lt;p>Note that the output includes the HTTP request (&lt;em>and reply&lt;/em>) headers sent to (&lt;em>by&lt;/em>) CouchDB.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Open &lt;strong>Fouton&lt;/strong> (&lt;em>CouchDB Web Interface&lt;/em>) on your browser:
+&lt;a href="http://127.0.0.1:5984/_utils/index.html" target="_blank" rel="noopener">http://127.0.0.1:5984/_utils/index.html&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Access and observe the database &lt;strong>Deezer&lt;/strong> on &lt;strong>Fouton&lt;/strong>.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="querying-a-database">Querying a database&lt;/h3>
+&lt;p>Execute the following queries:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Query 1&lt;/strong>. Retrieve the name and the web page of the groups that are similar to the rock band Muse.&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>**Map** function(doc) {
+ var artists = doc.data; 
+if(doc._id == &amp;quot;muse_related_artists&amp;quot;) {
+for(var i in artists)
+emit(artists[i].name, artists[i].link);
+}
+}
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>&lt;strong>Query 2&lt;/strong>. Compute the total number of the albums produced by the rock band Muse (requires to check the ***reduce check button ***in Fouton).&lt;/li>
+&lt;/ul>
+&lt;pre>&lt;code>**Map** function(doc) {
+ var artists = doc.data; 
+if(doc._id == &amp;quot;muse_related_artists&amp;quot;) {
+for(var i in artists) emit('muse_albums', 1);
+}
+}
+**Reduce** function(keys, values, rereduce) {
+return sum(values);
+}
+&lt;/code>&lt;/pre>
+&lt;h3 id="theoretic-questions-to-answer">Theoretic questions (TO ANSWER)&lt;/h3>
+&lt;ul>
+&lt;li>Is it possible to represent data under the classic relational model (see the 1 Normal Form)?&lt;/li>
+&lt;li>Compare the notion of key in a relational schema with respect to the notion of key in key-value NoSQL approaches.&lt;/li>
+&lt;li>Why is it necessary to define views for querying a database in CouchDB? Is this a way of integrating data? Justify.&lt;/li>
+&lt;/ul>
+&lt;h2 id="references">REFERENCES&lt;/h2>
+&lt;ul>
+&lt;li>Book 
+&lt;a href="http://guide.couchdb.org/index.html" target="_blank" rel="noopener">CouchDB, the definitive guide&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://en.wikipedia.org/wiki/NoSQL" target="_blank" rel="noopener">NoSQL&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title/><link>https://javieraespinosa.github.io/web-programming-and-services/tp3b/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://javieraespinosa.github.io/web-programming-and-services/tp3b/</guid><description>&lt;h1 id="couchdb-expressing-queries">CouchDB: Expressing queries&lt;/h1>
+&lt;h2 id="requirement">Requirement&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;a href="http://couchdb.apache.org/" target="_blank" rel="noopener">CouchDB&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://curl.haxx.se/download.html" target="_blank" rel="noopener">cURL&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="https://javieraespinosa.github.io/web-programming-and-services/files/Allocine.zip">AlloCine files&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="to-hand-in">To Hand In&lt;/h2>
+&lt;p>This exercise will be handed in electronically:&lt;/p>
+&lt;ul>
+&lt;li>You will form groups of 2 or three&lt;/li>
+&lt;li>A report with answers and explanations of the principle you adopted in PDF&lt;/li>
+&lt;li>The report will state the JavaScript answers to the questions.&lt;/li>
+&lt;/ul>
+&lt;h2 id="to-do">To Do&lt;/h2>
+&lt;p>For this exercise you will use a set of file containing information about the films presented in Grenoble in 2011 (information retrieved from AlloCine API). Each of these files contains the films presented in a cinema of Grenoble at that time (i.e. there is a file per cinema and a total number of 9).&lt;/p>
+&lt;p>Start by creating and populating a new database in CouchDB using the data contained in the files named &lt;code>allocineGrenobleN.txt&lt;/code> with &lt;em>N&lt;/em> from &lt;em>1&lt;/em> to &lt;em>9&lt;/em>. For this purpose execute the following commands:&lt;/p>
+&lt;pre>&lt;code>curl -X PUT http://localhost:5984/allocine
+curl -T &amp;quot;allocineGrenoble1.txt&amp;quot; http://localhost:5984/allocine/allocineGrenoble1
+curl -T &amp;quot;allocineGrenoble2.txt&amp;quot; http://localhost:5984/allocine/allocineGrenoble2
+curl -T &amp;quot;allocineGrenoble3.txt&amp;quot; http://localhost:5984/allocine/allocineGrenoble3
+curl -T &amp;quot;allocineGrenoble4.txt&amp;quot; http://localhost:5984/allocine/allocineGrenoble4
+curl -T &amp;quot;allocineGrenoble5.txt&amp;quot; http://localhost:5984/allocine/allocineGrenoble5
+curl -T &amp;quot;allocineGrenoble6.txt&amp;quot; http://localhost:5984/allocine/allocineGrenoble6
+curl -T &amp;quot;allocineGrenoble7.txt&amp;quot; http://localhost:5984/allocine/allocineGrenoble7
+curl -T &amp;quot;allocineGrenoble8.txt&amp;quot; http://localhost:5984/allocine/allocineGrenoble8
+curl -T &amp;quot;allocineGrenoble9.txt&amp;quot; http://localhost:5984/allocine/allocineGrenoble9
+&lt;/code>&lt;/pre>
+&lt;p>&lt;em>&lt;strong>In your report give the code and a screen shot with the content on the database.&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>Using this database answer the following questions and do not forget to give:&lt;/p>
+&lt;ul>
+&lt;li>the code of the answer&lt;/li>
+&lt;li>the screenshots with the content of the database&lt;/li>
+&lt;/ul>
+&lt;p>Feel free to use the 
+&lt;a href="http://guide.couchdb.org/" target="_blank" rel="noopener">CouchDB book&lt;/a> for getting some inspiration.&lt;/p>
+&lt;h3 id="question-1">Question 1&lt;/h3>
+&lt;p>Note that the data set is quite complete. Define a simplified view in MapReduce that contains for each theatre the films presented in it. &lt;strong>Hint&lt;/strong>: You do not need a &amp;ldquo;reduce&amp;rdquo; here.&lt;/p>
+&lt;h3 id="question-2">Question 2&lt;/h3>
+&lt;p>Modify your answer to question 1 for filtering the theatres outside Grenoble downtown (e.g., do not include the theatres in Saint Martin d&amp;rsquo;Hères).&lt;/p>
+&lt;h3 id="question-3">Question 3&lt;/h3>
+&lt;p>Give the number of films that each theatre is presenting. &lt;strong>Hint&lt;/strong>: You need a &amp;ldquo;reduce&amp;rdquo; here.&lt;/p>
+&lt;h3 id="question-4">Question 4&lt;/h3>
+&lt;p>Give the list of films with a press rating higher than 4 stars. &lt;strong>Attention&lt;/strong>: filter duplicates.&lt;/p>
+&lt;h3 id="question-5">Question 5&lt;/h3>
+&lt;p>Give the list of films presented 2 years ago (10.12.2011), and for each film, the theatre where it was presented and its schedule.&lt;/p>
+&lt;h3 id="question-7-bonus">Question 7 (BONUS)&lt;/h3>
+&lt;p>Give the list of films and for every film the list of theatres that present it. This question is a challenge but we encourage you to try to solve it.&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>Acknowledgment&lt;/strong>&lt;/p>
+&lt;p>Dr. Alexandre Termier, University Joseph Fourier originally designed this exercise. It has been slightly modified for this course.&lt;/p></description></item><item><title/><link>https://javieraespinosa.github.io/web-programming-and-services/tp4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://javieraespinosa.github.io/web-programming-and-services/tp4/</guid><description>&lt;h1 id="developing-a-restful-service">Developing a RESTful Service&lt;/h1>
+&lt;p>In Service Oriented Programming a RESTful service is a service conforming to the REST (&lt;strong>Re&lt;/strong>presentational &lt;strong>S&lt;/strong>tate &lt;strong>T&lt;/strong>ransfer) architecture style. In this kind of architecture (i) you think in terms of &lt;em>resources&lt;/em> and their &lt;em>representations&lt;/em> (instead of thinking about operations, inputs and outputs), and (ii) you address and transfer &lt;em>resource states&lt;/em> using the URI and HTTP standards.&lt;/p>
+&lt;p>When a service follows the REST architecture, every client knowing how to use HTTP can access the states and representations of the resources of a RESful service (cf. figure below). In this exercise you will develop a RESTful service using Javascript and NodeJS for exposing a music catalogue as a set of resources.&lt;/p>
+&lt;p>&lt;img src="https://javieraespinosa.github.io/web-programming-and-services/img/REST-Architecture.png" alt="REST Architecture">&lt;/p>
+&lt;h2 id="requirements">Requirements&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;a href="http://nodejs.org/" target="_blank" rel="noopener">NodeJS&lt;/a>&lt;/li>
+&lt;li>
+&lt;a href="http://expressjs.com/" target="_blank" rel="noopener">Express&lt;/a> (NodeJS module)&lt;/li>
+&lt;li>
+&lt;a href="http://curl.haxx.se/download.html" target="_blank" rel="noopener">cURL&lt;/a> or 
+&lt;a href="https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=1&amp;amp;ved=0CB8QFjAA&amp;amp;url=https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Fpostman-rest-client%2Ffdmmgilgnpjigdojojpjoooidkmcomcm&amp;amp;ei=65_nVNyUGYv2UtOQhNgF&amp;amp;usg=AFQjCNFL71vN61QG0LKlw7VDJvIZDprjHA&amp;amp;sig2=Pj7vJFRZQ5Nnpl3-DqQ-0A&amp;amp;bvm=bv.86475890,d.d24" target="_blank" rel="noopener">Postman&lt;/a> (Chrome extension)&lt;/li>
+&lt;li>
+&lt;a href="http://couchdb.apache.org/" target="_blank" rel="noopener">CouchDB&lt;/a>&lt;/li>
+&lt;li>MusicCatalog app (
+&lt;a href="https://javieraespinosa.github.io/web-programming-and-services/files/MusicCatalog.zip">download&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="objectives">Objectives&lt;/h2>
+&lt;ul>
+&lt;li>Implement a RESTful service and understand the use of HTTP methods for interacting with it.&lt;/li>
+&lt;li>Develop an application that uses your RESTful service.&lt;/li>
+&lt;li>Use a NoSQL database for storing the RESTful service data.&lt;/li>
+&lt;/ul>
+&lt;h2 id="music-catalog-overview">Music catalog overview&lt;/h2>
+&lt;p>For this exercise you will use the **Music Catalog **application. The following figure illustrates its architecture (REST service and client parts).&lt;/p>
+&lt;p>&lt;img src="https://javieraespinosa.github.io/web-programming-and-services/img/Music-Catalog-Architecture.png" alt="Music Catalog Architecture">&lt;/p>
+&lt;p>As shown in the figure, the Music Catalog service exposes two resources:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>/albums&lt;/strong> &amp;mdash; represents a music catalog as a collection of albums.&lt;/li>
+&lt;li>&lt;strong>/albums/:id&lt;/strong> &amp;mdash; represents an album identified by &lt;strong>:id&lt;/strong>.&lt;/li>
+&lt;/ul>
+&lt;p>The figure also shows that clients and service exchange information about albums using the &lt;strong>JSON&lt;/strong> data representation. The following diagram the structure representing an album instance.&lt;/p>
+&lt;p>&lt;img src="https://javieraespinosa.github.io/web-programming-and-services/img/Album-structure1.png" alt="Album structure.png">&lt;/p>
+&lt;h2 id="service-behaviour">Service behaviour&lt;/h2>
+&lt;p>In order to implement a RESTful service you have to specify &lt;em>what to do&lt;/em> when a client executes an HTTP operation &lt;em>over&lt;/em> one of your resources. In web programming this is called &lt;strong>routing&lt;/strong> (i.e. the association of a HTTP operation with a resource).&lt;/p>
+&lt;p>The table below summarizes the semantic of HTTP operations when executed over the Music Catalog resources.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>URL&lt;/th>
+&lt;th>Method&lt;/th>
+&lt;th>Parameter&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>http://localhost:3000/albums&lt;/td>
+&lt;td>GET&lt;/td>
+&lt;td>&amp;ndash;&lt;/td>
+&lt;td>List all the albums&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PUT&lt;/td>
+&lt;td>&amp;ndash;&lt;/td>
+&lt;td>Unused&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>POST&lt;/td>
+&lt;td>&amp;ndash;&lt;/td>
+&lt;td>Unused&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>DELETE&lt;/td>
+&lt;td>&amp;ndash;&lt;/td>
+&lt;td>Unused&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>http://localhost:3000/albums/:id&lt;/td>
+&lt;td>GET&lt;/td>
+&lt;td>&amp;ndash;&lt;/td>
+&lt;td>Get the album&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PUT&lt;/td>
+&lt;td>Album&lt;/td>
+&lt;td>Update the album&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>POST&lt;/td>
+&lt;td>&amp;ndash;&lt;/td>
+&lt;td>Unused&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>DELETE&lt;/td>
+&lt;td>&amp;ndash;&lt;/td>
+&lt;td>Delete the album&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>In the Music Catalog REST service, these semantics are implemented by the routings specified in the &lt;strong>CatalogService.js&lt;/strong> file. The content of this file is shown below.&lt;/p>
+&lt;pre>&lt;code class="language-js">var express   = require('express');
+var bodyParser = require('body-parser');
+var app = express();
+app.use(bodyParser.json());
+var albums = {};
+albums['1'] = { &amp;quot;id&amp;quot;:1, &amp;quot;name&amp;quot;: 'The 2nd Law', &amp;quot;artist&amp;quot;: 'Muse', &amp;quot;year&amp;quot;: 2012 };
+app.get('/albums', function (request, response) {
+response.json(albums);
+});
+app.get('/albums/:id', function (request, response) {
+response.json(albums[request.params.id]);
+});
+app.put('/albums/:id', function (request, response) {
+var album = request.body;
+albums[request.params.id] = album;
+response.json('OK');
+});
+app.delete('/albums/:id', function (request, response) {
+var deleted = delete albums[request.params.id];
+response.json(deleted);
+});
+var server = app.listen(3000, function () {
+console.log('Listening at http://localhost:%s', server.address().port);
+});
+&lt;/code>&lt;/pre>
+&lt;p>As you can see, the catalog service defines routes by calling the GET/PUT/POST/DELETE methods of an &lt;em>express object&lt;/em> (see 
+&lt;a href="http://expressjs.com/4x/api.html" target="_blank" rel="noopener">Express&lt;/a> for more information). For instance, the following code snippet illustrates &lt;em>how to retrieve a specific album&lt;/em> using its ID by &lt;strong>routing&lt;/strong> the &lt;strong>GET&lt;/strong> operation to the resource &lt;strong>/albums/:id&lt;/strong>.&lt;/p>
+&lt;pre>&lt;code>app.get('/albums/:id', function (request, response) {
+response.json(albums[request.params.id]);
+});
+&lt;/code>&lt;/pre>
+&lt;p>Note that the ID of an album is &lt;em>resolved dynamically&lt;/em> by matching the request&amp;rsquo; URI with the string &lt;strong>/albums/:id&lt;/strong>. Also note that you can access this value at runtime by using the object &lt;strong>request.params&lt;/strong>. Finally note that, before sending information back to the client (i.e., the set of albums), the service transforms the &lt;em>JavaScript object&lt;/em> containing the album information (&lt;strong>albums[request.params.id]&lt;/strong>) into its *JSON representation *(&lt;strong>response.json(OBJECT)&lt;/strong>).&lt;/p>
+&lt;p>The following code snippet illustrates how to &lt;em>add a new album to the catalog&lt;/em> by &lt;strong>routing&lt;/strong> a &lt;strong>PUT&lt;/strong> operation to the resource &lt;strong>/albums/:id&lt;/strong>.&lt;/p>
+&lt;pre>&lt;code>var app = express();
+app.use(bodyParser.json());
+app.put('/albums/:id', function (request, response) {
+var album = request.body;
+albums[request.params.id] = album;
+response.json('OK');
+});
+&lt;/code>&lt;/pre>
+&lt;p>In this example the service retrieves the information about the new album by accessing the HTTP request body (&lt;strong>request.body&lt;/strong>). Then, as in the previous example, it uses the *id *specified in the &lt;em>album resource&lt;/em> (&lt;strong>request.params.id&lt;/strong>) in order to store the album into the music catalog (&lt;strong>albums[request.params.id] = album&lt;/strong>).&lt;/p>
+&lt;p>Recall that client and service send albums&amp;rsquo; information using the JSON data representation. This implies that you have to &lt;strong>ALWAYS&lt;/strong> transform a JavaScript object into JSON (and vice versa) in order to communicate. Note that in the previous example Express converts automatically the &lt;strong>request.body&lt;/strong> to Javascript because it assumes that all body requests are represented in JSON (&lt;strong>app.use(bodyParser.json())&lt;/strong>).&lt;/p>
+&lt;h2 id="testing-the-service-catalog">Testing the service catalog&lt;/h2>
+&lt;p>Run the Music Catalog service by executing the following command inside the Music Catalog application folder:&lt;/p>
+&lt;pre>&lt;code>node CatalogService
+&lt;/code>&lt;/pre>
+&lt;p>Once running, test the service by issuing the following HTTP requests with cURL (or 
+&lt;a href="https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=1&amp;amp;ved=0CB8QFjAA&amp;amp;url=https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Fpostman-rest-client%2Ffdmmgilgnpjigdojojpjoooidkmcomcm&amp;amp;ei=65_nVNyUGYv2UtOQhNgF&amp;amp;usg=AFQjCNFL71vN61QG0LKlw7VDJvIZDprjHA&amp;amp;sig2=Pj7vJFRZQ5Nnpl3-DqQ-0A&amp;amp;bvm=bv.86475890,d.d24" target="_blank" rel="noopener">Postman&lt;/a>).&lt;/p>
+&lt;pre>&lt;code> # GET all albums
+curl localhost:3000/albums # Add new album
+curl -X PUT localhost:3000/albums/2 -H &amp;quot;Content-Type: application/json&amp;quot; -d @-
+{
+&amp;quot;id&amp;quot;: 2,
+&amp;quot;name&amp;quot;: &amp;quot;The Resistance&amp;quot;,
+&amp;quot;artist&amp;quot;: &amp;quot;Muse&amp;quot;,
+&amp;quot;year&amp;quot;: 2009
+}
+# Press CTRL + D
+# GET all albums
+curl localhost:3000/albums
+&lt;/code>&lt;/pre>
+&lt;h2 id="service-client">Service client&lt;/h2>
+&lt;p>Until now you have used a third-party tool for interacting with the Music Catalog service (e.g., Web Browser, cURL, Postman). In this section you will use the Catalog Client (a JavaScript application) for sending HTTP request to the Catalog Service.&lt;/p>
+&lt;p>As shown in the figure below, the Catalog Client is composed of the following classes:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>HttpClient&lt;/strong> &amp;mdash; Offers basic operations for executing HTTP requests. The HTTP client assumes that all data is sent using JSON as the data format representation.&lt;/li>
+&lt;li>&lt;strong>CatalogClient&lt;/strong> &amp;mdash; Offers operations for adding, getting, removing the albums in the Music Catalog. These operations use the HTTP Client.&lt;/li>
+&lt;li>&lt;strong>Run&lt;/strong> &amp;mdash; Script illustrating the use of the Catalog Client.&lt;/li>
+&lt;/ul>
+&lt;h3 id="client-architectureimgclient-architecturepng">&lt;img src="https://javieraespinosa.github.io/web-programming-and-services/img/Client-Architecture.png" alt="Client Architecture">&lt;/h3>
+&lt;h3 id="http-client">HTTP client&lt;/h3>
+&lt;p>The following snippet shows the code of the HTTP Client class (cf. &lt;strong>HttpClient.js&lt;/strong> file).&lt;/p>
+&lt;pre>&lt;code>this.GET = function(url, callback) {
+this.doRequest('GET', url, null, callback);
+};
+this.PUT = function (url, data, callback) {
+this.doRequest('PUT', url, data, callback);
+};
+this.DELETE = function (url, callback) {
+this.doRequest('DELETE', url, null, callback);
+};
+this.doRequest = function(verb, url, data, callback) {
+var options = {
+hostname: URL.*parse*(url).hostname,
+port:     URL.*parse*(url).port,
+path:     URL.*parse*(url).path,
+method:   verb,
+headers: {
+'Content-Type': 'application/json',
+'Content-Length': (data)? data.length: 0
+}
+};
+var req = http.request(options, function(res) {...);
+req.write( (data)? data: '');
+req.end();
+};
+&lt;/code>&lt;/pre>
+&lt;p>Note that all HTTPClient operations (GET/PUT/DELETE) depend on the &lt;strong>doRequest&lt;/strong> function, which is in charge of preparing the HTTP message: *header *(&lt;strong>options&lt;/strong>) and &lt;em>body&lt;/em> (&lt;strong>req.write(data)&lt;/strong>). Also note that &lt;strong>doRequest&lt;/strong> assumes that all content (&lt;strong>data&lt;/strong>) sent by the HTTPClient is represented in JSON (&lt;strong>&amp;lsquo;Content-Type: application/json&amp;rsquo;&lt;/strong>).&lt;/p>
+&lt;h3 id="catalog-client">Catalog client&lt;/h3>
+&lt;p>The following snippet illustrates the use of the &lt;strong>HttpClient&lt;/strong> for &lt;em>adding&lt;/em> and *getting *an album (cf. &lt;strong>CatalogClient.js&lt;/strong>).&lt;/p>
+&lt;pre>&lt;code>var ALBUMS_URI = 'http://localhost:3000/albums';
+var ALBUM_URI = 'http://localhost:3000/albums/{_}';
+var http = new HttpClient();
+this.addAlbum = function (album, callback) {
+var url = ALBUM_URI.replace('{_}', album.id);
+var data = JSON.stringify(album);
+http.PUT(url, data, callback)
+};
+this.getAlbum = function (albumID, callback) {
+var url = ALBUM_URI.replace('{_}', albumID);
+http.GET(url, function (resp) {
+var album = JSON.parse(resp.body);
+callback(album);
+});
+};
+&lt;/code>&lt;/pre>
+&lt;p>Note that before adding a &lt;em>new album&lt;/em> into the catalog (using &lt;strong>http.PUT&lt;/strong>), the &lt;strong>addAlbum&lt;/strong> function converts the album JavaScript object into JSON using the &lt;strong>JSON.stringify()&lt;/strong>. In a similar way, when the &lt;strong>getAlbum&lt;/strong> function receives the response from the service, it uses the &lt;strong>JSON.parse&lt;/strong>function for converting the &lt;strong>response body&lt;/strong> (sent in JSON format) into a JavaScript object.&lt;/p>
+&lt;h3 id="run-script">Run script&lt;/h3>
+&lt;p>Finally the following code illustrates the use of the CatalogClient class for *adding, retrieving and removing *albums programmatically (cf. &lt;strong>Run.js&lt;/strong> file).&lt;/p>
+&lt;pre>&lt;code>   /// Step 0: Show the albums in the catalog
+   .then(function (next) {
+       client.getAlbums(function (albums) {
+           console.log('\n'+'ALBUMS (before insertion)');
+           console.log(albums);
+           next();
+       });
+   })
+   /// Step 1: Insert new album in Catalog
+   .then(function (next) {
+       var album = { &amp;quot;id&amp;quot;:2, &amp;quot;name&amp;quot;:'The Resistance', &amp;quot;artist&amp;quot;:'Muse', &amp;quot;year&amp;quot;:2009 };
+       client.addAlbum(album, function (resp) {
+            next();
+       });
+   })
+   /// Step 2: Insert another album (with errors)
+   .then(function (next) {
+       var album = { &amp;quot;id&amp;quot;: 3, &amp;quot;name&amp;quot;: 'XXXX', &amp;quot;artist&amp;quot;: 'YYYY', &amp;quot;year&amp;quot;: 0000 };
+       client.addAlbum(album, function (resp) {
+            next();
+       });
+   })
+   /// Step 3: Show the albums in the catalog
+   .then(function (next) {
+       client.getAlbums(function (albums) {
+           console.log('\n'+'ALBUMS (after insertions)');
+           console.log(albums);
+            next();
+       });
+   })
+   /// Step 4: Remove the album with errors
+   .then(function (next) {
+       client.removeAlbum('3', function () {
+          next();
+       });
+   })
+   /// Step 5: Show (again) the albums in the catalog
+   .then(function (next) {
+       client.getAlbums(function (albums) {
+           console.log('\n'+'ALBUMS (after deletion)');
+           console.log(albums);
+           next();
+       });
+   });
+&lt;/code>&lt;/pre>
+&lt;h2 id="to-do">To Do&lt;/h2>
+&lt;p>For this exercise you have to:&lt;/p>
+&lt;ul>
+&lt;li>Describe the characteristics of the Catalog REST service. For instance, it is stateful/stateless, persistent/non-persistent?&lt;/li>
+&lt;li>Implement a Deezer Client using the HTTPClient class for &lt;em>searching&lt;/em> and &lt;em>retrieves&lt;/em> information about albums using the 
+&lt;a href="http://developers.deezer.com/api" target="_blank" rel="noopener">Deezer RESTful Service&lt;/a>.&lt;/li>
+&lt;li>Modify the Catalog Service in order to store the Catalog in CouchDB.&lt;/li>
+&lt;li>Define a CouchDB view for retrieving the URLs of the albums&amp;rsquo; covers (see 
+&lt;a href="http://guide.couchdb.org/" target="_blank" rel="noopener">CouchDB: The definitive guide&lt;/a>).&lt;/li>
+&lt;/ul></description></item></channel></rss>
